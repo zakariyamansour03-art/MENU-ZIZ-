@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Officiel - Café ZIZ</title>
+    <!-- Fonts pour le côté luxe (Cinzel pour les titres, Montserrat pour le texte) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ÉCRAN DE CHARGEMENT -->
+    <div id="loading-screen" class="loading-screen">
+        <div style="text-align: center;">
+            <h1 class="logo loading-logo">CAFÉ ZIZ</h1>
+            <p class="loading-slogan">✨ النهار خايب؟ دخل لزيز… غادي تهنى وتضحك ☕😄✨</p>
+        </div>
+    </div>
+
+    <div class="menu-wrapper" id="main-content" style="opacity: 0; transition: opacity 0.8s ease;">
+        <!-- Cadre intérieur doré -->
+        <div class="menu-border">
+
+            <!-- SÉLECTEUR DE LANGUE -->
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="fr">🇫🇷 Français</button>
+                <button class="lang-btn" data-lang="ar">🇲🇦 العربية</button>
+                <button class="lang-btn" data-lang="en">🇬🇧 English</button>
+            </div>
+            
+            <!-- EN-TÊTE -->
+            <header class="menu-header">
+                <h1 class="logo">CAFÉ ZIZ</h1>
+                <p class="subtitle" data-i18n="subtitle">Restaurant – Café – Terrasse</p>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Azilal</p>
+                <div class="separator-lg"></div>
+            </header>
+
+
+            <!-- CONTENU PRINCIPAL -->
+            <!-- STICKY NAVIGATION BAR -->
+            <nav class="sticky-nav">
+                <ul class="nav-links">
+                    <li><a href="#ftour" data-i18n="nav_ftour"><i class="fas fa-coffee"></i> Ftour</a></li>
+                    <li><a href="#boissons" data-i18n="nav_boissons"><i class="fas fa-mug-hot"></i> Boissons</a></li>
+                    <li><a href="#plats" data-i18n="nav_plats"><i class="fas fa-concierge-bell"></i> Plats</a></li>
+                    <li><a href="#fastfood" data-i18n="nav_fastfood"><i class="fas fa-hamburger"></i> Fast Food</a></li>
+                    <li><a href="#desserts" data-i18n="nav_desserts"><i class="fas fa-ice-cream"></i> Desserts</a></li>
+                    <li class="nav-livraison">
+                        <a href="#livraison" onclick="activateLivraisonMode(event)">
+                            <i class="fas fa-motorcycle"></i> <span data-i18n="livraison">Livraison</span>
+                            <span class="nav-gratuit-badge">GRATUIT</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- SECTION PETIT-DÉJEUNER (Ftour) -->
+            <div id="ftour" class="ftour-section" style="padding-top: 60px; margin-top: -40px;">
+                <h2 class="category-title main-cat"><i class="fas fa-coffee"></i> <span data-i18n="breakfast_title">LE PETIT-DÉJEUNER</span></h2>
+                <div class="menu-content">
+                    <div class="menu-column">
+                        <div class="category">
+                            <ul class="items">
+                                <li style="display: block; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                        <h3 class="sub-cat" style="margin: 0; padding: 0; border: none;"><i class="fas fa-star" style="color: var(--gold-primary);"></i> <span class="item-name" data-i18n="ftor_ziz">Ftor ZIZ</span></h3>
+                                        <span class="item-price" style="color: var(--gold-primary); font-weight: 700;">25 DH</span>
+                                    </div>
+                                    <p class="ftour-desc" data-i18n="ftor_ziz_desc" style="margin: 0; line-height: 1.4;">Khobz • Œufs • Confiture • Miel • Amlou • Olives • Huile d'olive • Yaourt • Thé / Café</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="category">
+                            <ul class="items">
+                                <li style="display: block; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                        <h3 class="sub-cat" style="margin: 0; padding: 0; border: none;"><i class="fas fa-crown" style="color: #ff9800;"></i> <span class="item-name" data-i18n="ftor_royal">Ftor Royal</span></h3>
+                                        <span class="item-price" style="color: var(--gold-primary); font-weight: 700;">42 DH</span>
+                                    </div>
+                                    <p class="ftour-desc" data-i18n="ftor_royal_desc" style="margin: 0; line-height: 1.4;">Khlii • Thé / Café • Omelette • Jben • Amlou • Huile • Dinde Fumée • Jus d'Orange • Miel • Lovis • Eau minérale • Mkhmar / Baguette • Patisserie • Olives</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="menu-column">
+                        <div class="category">
+                            <h3 class="sub-cat"><i class="fas fa-egg"></i> <span data-i18n="omelettes">Omelettes</span></h3>
+                            <ul class="items">
+                                <li><span class="item-name" data-i18n="omelette_fromage">Omelette Fromage</span> <span class="small-desc" data-i18n="omelette_fromage_desc">(Oeuf + Fromage + Pain)</span></li>
+                                <li><span class="item-name" data-i18n="omelette_thon">Omelette Thon</span> <span class="small-desc" data-i18n="omelette_thon_desc">(Oeuf + Thon + Fromage + Pain)</span></li>
+                                <li><span class="item-name" data-i18n="omelette_mix">Omelette Mix</span> <span class="small-desc" data-i18n="omelette_mix_desc">(Oeuf + Fromage + Thon + Légumes)</span></li>
+                                <li><span class="item-name" data-i18n="omelette_ziz">Omelette Ziz</span> <span class="small-desc" data-i18n="omelette_ziz_desc">(Oeuf + Fromage + Thon + Charcuterie)</span></li>
+                                <li><span class="item-name" data-i18n="omelette_speciale">Omelette Spéciale</span> <span class="small-desc" data-i18n="omelette_speciale_desc">(... + Charcuterie + Légumes)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- SECTION BOISSONS (Mcharib) -->
+            <div id="boissons" class="menu-content top-margin-border" style="padding-top: 60px; margin-top: -20px;">
+                <!-- Les Jus f boite wahedha hit twal -->
+                <div class="category" style="flex: 1; min-width: 300px;">
+                    <h2 class="category-title"><i class="fas fa-glass-whiskey"></i> <span data-i18n="les_jus">LES JUS</span></h2>
+                    <ul class="items" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px 40px;">
+                        <li><span class="item-name" data-i18n="jus_ananas">Jus d'Ananas</span><span class="dots"></span><span class="item-price">23 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_fraise">Jus de fraise</span><span class="dots"></span><span class="item-price">23 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_mangue">Jus de mangue</span><span class="dots"></span><span class="item-price">23 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_citron">Jus de citron</span><span class="dots"></span><span class="item-price">20 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_peche">Jus de pêche</span><span class="dots"></span><span class="item-price">23 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_kiwi">Jus de kiwi</span><span class="dots"></span><span class="item-price">23 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_orange">Jus d'orange</span><span class="dots"></span><span class="item-price">15 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_pomme">Jus de pomme</span><span class="dots"></span><span class="item-price">13 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_banane">Jus de banane</span><span class="dots"></span><span class="item-price">13 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_avocat">Jus d'avocat</span><span class="dots"></span><span class="item-price">18 DH</span></li>
+                        <li><span class="item-name" data-i18n="panache">Panaché</span><span class="dots"></span><span class="item-price">23 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_mojito">Jus mojito</span><span class="dots"></span><span class="item-price">20 DH</span></li>
+                        <li><span class="item-name" data-i18n="jus_carotte">Jus de carotte</span><span class="dots"></span><span class="item-price">13 DH</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="menu-content top-margin">
+                <div class="category" style="flex: 1;">
+                    <h2 class="category-title"><i class="fas fa-mug-hot"></i> <span data-i18n="boissons_chaudes">BOISSONS CHAUDES</span></h2>
+                    <ul class="items">
+                        <li><span class="item-name" data-i18n="espresso">Espresso</span><span class="dots"></span><span class="item-price">10 DH</span></li>
+                        <li><span class="item-name" data-i18n="cappuccino">Cappuccino</span><span class="dots"></span><span class="item-price">10 DH</span></li>
+                        <li><span class="item-name" data-i18n="cafe_nes_nes">Café nes nes</span><span class="dots"></span><span class="item-price">10 DH</span></li>
+                        <li><span class="item-name" data-i18n="espresso_au_lait">Espresso au lait</span><span class="dots"></span><span class="item-price">10 DH</span></li>
+                        <li><span class="item-name" data-i18n="cafe_noir">Café noir</span><span class="dots"></span><span class="item-price">10 DH</span></li>
+                        <li><span class="item-name" data-i18n="cafe_creme">Café crème</span><span class="dots"></span><span class="item-price">10 DH</span></li>
+                        <li><span class="item-name" data-i18n="chocolat_chaud">Chocolat chaud</span><span class="dots"></span><span class="item-price">10 DH</span></li>
+                    </ul>
+                </div>
+                <div class="category" style="flex: 1;">
+                    <h2 class="category-title"><i class="fas fa-snowflake"></i> <span data-i18n="boissons_froid">BOISSONS FROID</span></h2>
+                    <ul class="items">
+                        <li><span class="item-name" data-i18n="red_bull">Red bull</span><span class="dots"></span><span class="item-price">22 DH</span></li>
+                        <li><span class="item-name" data-i18n="eau_minerale_33cl">Eau minérale 33cl</span><span class="dots"></span><span class="item-price">3 DH</span></li>
+                        <li><span class="item-name" data-i18n="soda">Soda</span><span class="dots"></span><span class="item-price">12 DH</span></li>
+                        <li><span class="item-name" data-i18n="eau_minerale_05l">Eau minérale 0.5L</span><span class="dots"></span><span class="item-price">7 DH</span></li>
+                        <li><span class="item-name" data-i18n="eau_minerale_15l">Eau minérale 1.5L</span><span class="dots"></span><span class="item-price">10 DH</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SECTION PLAT ET TRADITION (Tajine / Couscous / Plat) -->
+            <div id="plats" class="menu-content flex-three-col top-margin-border" style="padding-top: 60px; margin-top: -20px;">
+                <div class="category small-cat">
+                     <h2 class="category-title"><i class="fas fa-utensils"></i> <span data-i18n="plat">PLAT</span></h2>
+                     <ul class="items">
+                         <li><span class="item-name" data-i18n="brochette_dinde">Brochette dinde</span><span class="dots"></span><span class="item-price">45 DH</span></li>
+                         <li><span class="item-name" data-i18n="viande_hachee">Viande hachée</span><span class="dots"></span><span class="item-price">50 DH</span></li>
+                         <li><span class="item-name" data-i18n="mix">Mix</span><span class="dots"></span><span class="item-price">60 DH</span></li>
+                         <li><span class="item-name">ZIZ</span><span class="dots"></span><span class="item-price">60 DH</span></li>
+                         <li><span class="item-name" data-i18n="emince_poulet">Emincé de poulet</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                         <li><span class="item-name" data-i18n="escalope">Escalope</span><span class="dots"></span><span class="item-price">70 DH</span></li>
+                     </ul>
+                </div>
+                
+                <div class="category small-cat">
+                    <h2 class="category-title"><i class="fas fa-bowl-food"></i> <span data-i18n="couscous">COUSCOUS</span> <i class="fas fa-mosque" style="font-size: 0.9em; margin-left: 10px; opacity: 0.85;"></i></h2>
+                    <p class="couscous-info"><strong data-i18n="couscous_info">COUSCOUS :</strong> <span data-i18n="couscous_desc">Le Spécial du</span> <strong style="color: #fff;" data-i18n="vendredi">Vendredi</strong></p>
+                    <ul class="items list-margin">
+                        <li><span class="item-name" data-i18n="couscous_poulet">Couscous poulet</span><span class="dots"></span><span class="item-price">30 DH</span></li>
+                        <li><span class="item-name" data-i18n="couscous_viande">Couscous viande</span><span class="dots"></span><span class="item-price">45 DH</span></li>
+                        <li><span class="item-name" data-i18n="couscous_tfaya">Couscous tfaya</span><span class="dots"></span><span class="item-price">45 DH</span></li>
+                        <li><span class="item-name" data-i18n="couscous_mix">Couscous mix</span><span class="dots"></span><span class="item-price">50 DH</span></li>
+                        <li style="color: var(--gold-light); font-weight: 500;"><i class="fas fa-glass-water" style="color: #fff; margin-right: 5px;"></i> <span class="item-name" data-i18n="lben">Lben</span> 🥛 <span class="dots"></span><span class="item-price">0 DH</span></li>
+                    </ul>
+                </div>
+
+                <div class="menu-column">
+                    <!-- SALADES -->
+                    <div class="category small-cat">
+                        <h2 class="category-title"><i class="fas fa-leaf"></i> <span data-i18n="salade">SALADE</span></h2>
+                        <ul class="items">
+                            <li><span class="item-name" data-i18n="marocaine">Marocaine</span><span class="dots"></span><span class="item-price">20 DH</span></li>
+                            <li><span class="item-name" data-i18n="american">Américan</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name">ZIZ</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                            <li><span class="item-name" data-i18n="micsican">Micsican</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                            <li><span class="item-name" data-i18n="sizar">Sizar</span><span class="dots"></span><span class="item-price">50 DH</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION DU MILIEU (FAST FOOD) -->
+            <div id="fastfood" class="menu-content top-margin" style="padding-top: 60px; margin-top: -40px;">
+                
+                <!-- COLONNE 1 -->
+                <div class="menu-column">
+                    <!-- PANINI -->
+                    <div class="category">
+                        <h2 class="category-title"><i class="fas fa-bread-slice"></i> <span data-i18n="panini">PANINI</span></h2>
+                        <ul class="items">
+                            <li><span class="item-name" data-i18n="dinde">Dinde</span><span class="dots"></span><span class="item-price">18 DH</span></li>
+                            <li><span class="item-name" data-i18n="viande_hachee">Viande hachée</span><span class="dots"></span><span class="item-price">20 DH</span></li>
+                            <li><span class="item-name" data-i18n="mix">Mix</span><span class="dots"></span><span class="item-price">22 DH</span></li>
+                            <li><span class="item-name" data-i18n="royal">Royal</span><span class="dots"></span><span class="item-price">24 DH</span></li>
+                            <li><span class="item-name">ZIZ</span><span class="dots"></span><span class="item-price">24 DH</span></li>
+                            <li><span class="item-name" data-i18n="fruit_de_mer">Fruit de mer</span><span class="dots"></span><span class="item-price">25 DH</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- SANDWICH -->
+                    <div class="category">
+                        <h2 class="category-title"><i class="fas fa-hotdog"></i> <span data-i18n="sandwich">SANDWICH</span></h2>
+                        <ul class="items">
+                            <li><span class="item-name" data-i18n="dinde">Dinde</span><span class="dots"></span><span class="item-price">18 DH</span></li>
+                            <li><span class="item-name" data-i18n="viande_hachee">Viande hachée</span><span class="dots"></span><span class="item-price">20 DH</span></li>
+                            <li><span class="item-name" data-i18n="mix">Mix</span><span class="dots"></span><span class="item-price">22 DH</span></li>
+                            <li><span class="item-name">ZIZ</span><span class="dots"></span><span class="item-price">24 DH</span></li>
+                            <li><span class="item-name" data-i18n="fruit_de_mer">Fruit de mer</span><span class="dots"></span><span class="item-price">25 DH</span></li>
+                            <li><span class="item-name" data-i18n="royal">Royal</span><span class="dots"></span><span class="item-price">25 DH</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- COLONNE 2 -->
+                <div class="menu-column">
+                    <!-- TACOS -->
+                    <div class="category">
+                        <h2 class="category-title"><i class="fas fa-utensils"></i> <span data-i18n="tacos">TACOS</span></h2>
+                        <ul class="items">
+                            <li><span class="item-name" data-i18n="viande_hachee">Viande hachée</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name" data-i18n="dinde">Dinde</span><span class="dots"></span><span class="item-price">32 DH</span></li>
+                            <li><span class="item-name" data-i18n="mix">Mix</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                            <li><span class="item-name" data-i18n="royal">Royal</span><span class="dots"></span><span class="item-price">42 DH</span></li>
+                            <li><span class="item-name">ZIZ</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                            <li><span class="item-name" data-i18n="fruit_de_mer">Fruit de mer</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                            <li><span class="item-name" data-i18n="kabda">Kabda</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name" data-i18n="cordon_bleu">Cordon bleu</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- BURGER -->
+                    <div class="category">
+                        <h2 class="category-title"><i class="fas fa-hamburger"></i> <span data-i18n="burger">BURGER</span></h2>
+                        <ul class="items">
+                            <li><span class="item-name" data-i18n="chicken">Chicken</span><span class="dots"></span><span class="item-price">30 DH</span></li>
+                            <li><span class="item-name" data-i18n="american">Américan</span><span class="dots"></span><span class="item-price">34 DH</span></li>
+                            <li><span class="item-name" data-i18n="cheeseburger">Cheeseburger</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name">ZIZ</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name" data-i18n="mix">Mix</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                            <li><span class="item-name" data-i18n="royal">Royal</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- COLONNE 3 -->
+                <div class="menu-column">
+                    <!-- PIZZA -->
+                    <div class="category">
+                        <h2 class="category-title"><i class="fas fa-pizza-slice"></i> <span data-i18n="pizza">PIZZA</span></h2>
+                        <ul class="items">
+                            <li><span class="item-name" data-i18n="margarita">Margarita</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name" data-i18n="fromages_4">4 Fromages</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name" data-i18n="dinde_fume">Dinde fumé</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name" data-i18n="viande_hachee">Viande hachée</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                            <li><span class="item-name" data-i18n="dinde">Dinde</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name" data-i18n="mix">Mix</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                            <li><span class="item-name" data-i18n="thon">Thon</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name" data-i18n="saison_4">4 Saison</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                            <li><span class="item-name">ZIZ</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                            <li><span class="item-name" data-i18n="calzone">Calzone</span><span class="dots"></span><span class="item-price">35 DH</span></li>
+                            <li><span class="item-name" data-i18n="fruit_de_mer">Fruit de mer</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- FOUR & SNACK -->
+                    <div class="category">
+                        <h2 class="category-title"><i class="fas fa-bacon"></i> <span data-i18n="four_snack">FOUR & SNACK</span></h2>
+                        <ul class="items">
+                            <li><span class="item-name">Pastichio ZIZ</span><span class="dots"></span><span class="item-price">45 DH</span></li>
+                            <li><span class="item-name" data-i18n="gratin_royal">Gratin Royal / Ziz</span><span class="dots"></span><span class="item-price">40 DH</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION DESSERTS (LES GLACES) -->
+            <div id="desserts" class="menu-content top-margin-border" style="padding-top: 60px; margin-top: -20px;">
+                <div class="category" style="flex: 1; text-align: center;">
+                    <h2 class="category-title"><i class="fas fa-ice-cream"></i> <span data-i18n="glaces">LES GLACES</span></h2>
+                    <ul class="items no-price" style="display: flex; justify-content: center; gap: 30px; margin-top: 15px; list-style: none;">
+                        <li data-i18n="fraise">Fraise</li>
+                        <li data-i18n="nougat">Nougat</li>
+                        <li data-i18n="chocolat">Chocolat</li>
+                        <li data-i18n="pistache">Pistache</li>
+                        <li data-i18n="vanille">Vanille</li>
+                    </ul>
+                    <p class="glace-price" style="margin-top: 20px; font-size: 1.4rem; color: var(--gold-primary); font-family: 'Cinzel', serif;">
+                        <span data-i18n="la_boule">3 Boules :</span> <span class="price-hl">20 DH</span>
+                    </p>
+                    <p class="glace-price" style="margin-top: 5px; font-size: 1.2rem; color: var(--gold-light); font-family: 'Cinzel', serif;">
+                        <span data-i18n="mix">Mix</span><span class="dots"></span><span class="item-price">25 DH</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- SECTION LIVRAISON GRATUITE -->
+            <div id="livraison" class="livraison-section">
+                <div class="livraison-inner">
+                    <div class="livraison-badge-top">🆓 LIVRAISON GRATUITE</div>
+                    <h2 class="livraison-title"><i class="fas fa-motorcycle"></i> Livraison à Domicile</h2>
+                    <p class="livraison-subtitle">Commandez depuis chez vous – on livre <strong>GRATUITEMENT</strong> ! 🛵✨</p>
+
+                    <!-- FORMULAIRE COMMANDE -->
+                    <div class="order-form-container">
+                        <div class="order-form-title"><i class="fas fa-clipboard-list"></i> Passez votre commande</div>
+                        <form id="orderForm" class="order-form" onsubmit="sendOrder(event)">
+                            <div class="form-group">
+                                <label><i class="fas fa-user"></i> Votre Nom</label>
+                                <input type="text" id="clientName" placeholder="Ex: Mohammed..." required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-phone"></i> Numéro de téléphone</label>
+                                <input type="tel" id="clientPhone" placeholder="Ex: 06XXXXXXXX" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-map-marker-alt"></i> Adresse de livraison</label>
+                                <input type="text" id="clientAddress" placeholder="Ex: Quartier, Rue..." required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-utensils"></i> Votre commande</label>
+                                <textarea id="clientOrder" rows="4" placeholder="Ex: 1 Burger ZIZ + 1 Jus d'orange + 1 Pizza Mix..." required></textarea>
+                            </div>
+                            <button type="submit" class="livraison-whatsapp form-submit-btn">
+                                <i class="fab fa-whatsapp"></i> Envoyer sur WhatsApp
+                            </button>
+                        </form>
+                    </div>
+
+                    <p class="livraison-note">📞 On vous contacte pour confirmer – livraison GRATUITE !</p>
+                </div>
+            </div>
+
+            <!-- SECTION À PROPOS -->
+            <div class="about-section">
+                <div class="about-content">
+                    <h3 class="about-title"><i class="fas fa-star"></i> <span data-i18n="about_title">Mieux nous connaître</span></h3>
+                    <p class="about-text" data-i18n="about_text" data-i18n-html="true"><strong>Café ZIZ</strong> est l'un des restaurants et cafés les plus réputés à <strong>Azilal</strong>, connu pour la qualité de ses plats et son service raffiné 👑.</p>
+                    
+                    <div class="about-features">
+                        <h4 data-i18n="about_features_title">⭐ Ce qui distingue Café ZIZ :</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="feature_1">Produits frais & Haute qualité</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="feature_2">Prix accessibles à tous</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="feature_3">Espace agréable et confortable</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="feature_4">Service rapide et respectueux</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="feature_5">Idéal pour familles et jeunes</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="about-vision">
+                        <h4 data-i18n="about_vision_title">🎯 Notre Objectif :</h4>
+                        <p data-i18n="about_vision_text" data-i18n-html="true">Offrir une expérience exceptionnelle alliant :<br><strong>Goût – Qualité – Confort – Confiance</strong></p>
+                    </div>
+
+                    <div style="margin-top: 35px; text-align: center;">
+                        <a href="galerie.html" class="btn-gallery"><i class="fas fa-camera-retro"></i> <span data-i18n="gallery_btn">Voir la Galerie Photos</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION VIDÉO -->
+            <div class="video-section">
+                <div class="video-header">
+                    <h3 class="video-title"><i class="fas fa-play-circle" style="color: var(--gold-primary); margin-right: 10px;"></i> <span data-i18n="video_title">Découvrez Café ZIZ</span></h3>
+                    <p class="video-desc" data-i18n="video_desc">Plongez dans l'ambiance unique de notre espace.</p>
+                </div>
+                
+                <div class="video-container">
+                    <video controls width="100%" poster="logo.png" style="border: 2px solid var(--gold-dark); border-radius: 8px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);">
+                        <source src="Realistic_drone_shot_extended_5b89e298a0.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la balise vidéo.
+                    </video>
+                </div>
+            </div>
+
+            <!-- SECTION GOOGLE MAPS & AVIS -->
+            <div class="maps-section">
+                <div class="maps-header">
+                    <h3 class="maps-title"><i class="fas fa-map-marked-alt"></i> <span data-i18n="maps_title">Notre Localisation</span></h3>
+                    <div class="stars-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span class="rating-text">5.0</span>
+                    </div>
+                    <li class="nav-livraison">
+                        <a href="#livraison" onclick="activateLivraisonMode(event)">
+                            <i class="fas fa-motorcycle"></i> <span data-i18n="livraison">Livraison</span>
+                            <span class="nav-gratuit-badge">GRATUIT</span>
+                        </a>
+                    </li>
+                    <p class="maps-desc" data-i18n="maps_desc">Café & Restaurant Ziz, La meilleure adresse à Azilal.</p>
+                </div>
+                
+                <div class="maps-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3372.58988691509!2d-6.5865355!3d31.9520502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x100ab1437ac4fbe9%3A0xb3ad29bf5b144e57!2sCaf%C3%A9%20%26%20Restaurant%20Ziz!5e0!3m2!1sfr!2sma!4v1700000000000!5m2!1sfr!2sma" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <!-- PIED DE MENU -->
+            <footer class="menu-footer">
+                <div class="slogan-container">
+                    <p class="slogan" data-i18n="slogan">Qualité – Goût – Service</p>
+                    <div class="socials">
+                        <a href="https://web.facebook.com/zizazlal/" target="_blank" title="Facebook Café ZIZ"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/station_restaurant_ziz/" target="_blank" title="Instagram Café ZIZ"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="qr-container" style="display: flex; gap: 40px; text-align: center;">
+                    <div class="qr-item">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://web.facebook.com/zizazlal/&color=BF953F&bgcolor=060606" alt="QR Code Facebook" class="qr-code">
+                        <p class="qr-text" style="text-align: center; margin-top: 8px;"><i class="fab fa-facebook-f" style="color: var(--gold-primary);"></i> Rejoignez-nous<br>sur Facebook</p>
+                    </div>
+                    <div class="qr-item">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.instagram.com/station_restaurant_ziz/&color=BF953F&bgcolor=060606" alt="QR Code Instagram" class="qr-code">
+                        <p class="qr-text" style="text-align: center; margin-top: 8px;"><i class="fab fa-instagram" style="color: var(--gold-primary);"></i> Suivez-nous<br>sur Instagram</p>
+                    </div>
+                </div>
+            </footer>
+            
+        </div>
+    </div>
+
+    <!-- 🛒 PANIER FLOTTANT -->
+    <div id="cart-fab" onclick="toggleCart()" title="Mon Panier">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-badge" style="display:none;">0</span>
+    </div>
+
+    <div id="cart-panel">
+        <div class="cart-panel-header">
+            <h3><i class="fas fa-shopping-cart"></i> Mon Panier</h3>
+            <button class="cart-close-btn" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="cart-list">
+            <p class="cart-empty">Panier vide 🛒</p>
+        </div>
+        <div class="cart-panel-footer">
+            <div class="cart-total-row">
+                <span>TOTAL</span>
+                <span id="cart-total-price">0 DH</span>
+            </div>
+            <button class="cart-order-btn" onclick="goToOrder()">
+                <i class="fab fa-whatsapp"></i> Commander via WhatsApp
+            </button>
+            <button class="cart-clear-btn" onclick="clearCart()">
+                <i class="fas fa-trash"></i> Vider le panier
+            </button>
+        </div>
+    </div>
+
+    <!-- BOUTON WHATSAPP FLOTTANT -->
+    <a href="https://wa.me/212607350118" class="whatsapp-float" target="_blank" title="Contactez-nous sur WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Loading Screen Animation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                const mainContent = document.getElementById('main-content');
+                
+                loadingScreen.classList.add('hidden');
+                
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    mainContent.style.opacity = '1';
+                }, 800);
+            }, 2000);
+        });
+
+        // ===== FONCTION ENVOI COMMANDE WHATSAPP =====
+        // ===== FONCTION VOCALE BIENVENUE =====
+        function speakWelcome(onComplete) {
+            try {
+                // 1. Son de notification (Ding)
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                if (ctx.state === 'suspended') ctx.resume();
+                const osc = ctx.createOscillator();
+                const g = ctx.createGain();
+                osc.connect(g);
+                g.connect(ctx.destination);
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.1);
+                g.gain.setValueAtTime(0, ctx.currentTime);
+                g.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.05);
+                g.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.4);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.4);
+            } catch(e) {}
+
+            // 2. Synthèse vocale
+            if (!('speechSynthesis' in window)) {
+                if (onComplete) onComplete();
+                return;
+            }
+            window.speechSynthesis.cancel();
+            
+            setTimeout(() => {
+                const voices = window.speechSynthesis.getVoices();
+
+                // --- UTTERANCE 1: DARIJA ---
+                const msgArD = new SpeechSynthesisUtterance();
+                msgArD.text = "مَرْحْبَا بِيكُمْ عَنْدْ زِيزْ كُلْ يُومْ"; 
+                msgArD.lang = 'ar-SA';
+                let voiceArD = voices.find(v => v.lang.includes('ar-MA')) || 
+                               voices.find(v => (v.lang.includes('ar') && v.name.toLowerCase().includes('female'))) ||
+                               voices.find(v => v.lang.includes('ar'));
+                if (voiceArD) msgArD.voice = voiceArD;
+                msgArD.rate = 0.8;
+                msgArD.pitch = 1.1;
+
+                // --- UTTERANCE 2: ARABIC FUSHA ---
+                const msgArF = new SpeechSynthesisUtterance();
+                msgArF.text = "أهلاً بكم في مقهى زيز، نحن في خدمتكم كل يوم"; 
+                msgArF.lang = 'ar-SA';
+                if (voiceArD) msgArF.voice = voiceArD;
+                msgArF.rate = 0.85;
+                msgArF.pitch = 1.0;
+
+                // --- UTTERANCE 3: FRENCH ---
+                const msgFr = new SpeechSynthesisUtterance();
+                msgFr.text = "Bienvenue chez Café Ziz, à votre service chaque jour."; 
+                msgFr.lang = 'fr-FR';
+                let voiceFr = voices.find(v => (v.lang.includes('fr') && v.name.toLowerCase().includes('female'))) || 
+                               voices.find(v => v.lang.includes('fr'));
+                if (voiceFr) msgFr.voice = voiceFr;
+                msgFr.rate = 0.9;
+                msgFr.pitch = 1.0;
+
+                // Play sequentially
+                msgArD.onend = () => {
+                    setTimeout(() => window.speechSynthesis.speak(msgArF), 250);
+                };
+                msgArF.onend = () => {
+                    setTimeout(() => window.speechSynthesis.speak(msgFr), 250);
+                };
+                
+                // Final callback
+                msgFr.onend = () => {
+                    if (onComplete) onComplete();
+                };
+
+                // Fallback safe if speech synthesis fails to start or gets stuck
+                const fallbackTimeout = setTimeout(() => {
+                    if (onComplete) {
+                        onComplete();
+                        onComplete = null; // Prevent double call
+                    }
+                }, 8000); // 8 seconds safety
+
+                const originalOnEnd = msgFr.onend;
+                msgFr.onend = () => {
+                    clearTimeout(fallbackTimeout);
+                    if (onComplete) {
+                        onComplete();
+                        onComplete = null;
+                    }
+                };
+
+                window.speechSynthesis.speak(msgArD);
+            }, 150);
+        }
+
+        function sendOrder(e) {
+            e.preventDefault();
+            const nom     = document.getElementById('clientName').value.trim();
+            const tel     = document.getElementById('clientPhone').value.trim();
+            const adresse = document.getElementById('clientAddress').value.trim();
+            const commande = document.getElementById('clientOrder').value.trim();
+
+            const message =
+                `🏪 *COMMANDE - CAFÉ ZIZ*
+━━━━━━━━━━━━━━━━
+👤 *Nom:* ${nom}
+📞 *Tel:* ${tel}
+📍 *Adresse:* ${adresse}
+━━━━━━━━━━━━━━━━
+🛒 *Commande:*
+${commande}
+━━━━━━━━━━━━━━━━
+🚛 Livraison GRATUITE ✓`;
+
+            const url = `https://wa.me/212607350118?text=${encodeURIComponent(message)}`;
+            
+            // On joue l'audio d'abord, o mnin i-tsala i-siftna l WhatsApp
+            speakWelcome(() => {
+                window.location.href = url;
+            });
+        }
+    </script>
+    <script src="translate.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        // Préchauffer les voix pour le message vocal
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.getVoices();
+        }
+    </script>
+</body>
+</html>

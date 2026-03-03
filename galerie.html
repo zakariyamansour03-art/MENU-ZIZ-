@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Photos - Café ZIZ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="menu-wrapper">
+        <div class="menu-border">
+            
+            <!-- EN-TÊTE GALERIE -->
+            <header class="menu-header">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 20px;">
+                    <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> <span data-i18n="back_menu">Retour au Menu</span></a>
+                </div>
+                <h1 class="logo" style="font-size: 3rem;">GALERIE PHOTOS</h1>
+                <p class="subtitle" data-i18n="gallery_subtitle">Découvrez notre espace et nos délices</p>
+                <div class="separator-lg"></div>
+            </header>
+
+            <!-- GRILLE DE PHOTOS -->
+            <div class="gallery-grid">
+                <!-- Les images seront remplacées par les vraies photos du client -->
+                <div class="gallery-item">
+                    <img src="galerie_1.png" alt="Intérieur Café ZIZ">
+                </div>
+                <div class="gallery-item">
+                    <img src="galerie_2.png" alt="Ambiance Café ZIZ">
+                </div>
+                <div class="gallery-item">
+                    <img src="galerie_3.png" alt="Café ZIZ">
+                </div>
+                <div class="gallery-item">
+                    <img src="galerie_4.png" alt="Moment Café ZIZ">
+                </div>
+                <div class="gallery-item">
+                    <img src="galerie_5.png" alt="Espace Café ZIZ">
+                </div>
+                <!-- Nouvelles photos de Facebook/Instagram -->
+                <div class="gallery-item">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweoNxLHYcgx1hzj46jsmkvnhsr-VAkMN4bJezgdVap1Wr3NnrfoCGLHvt9lrUhoif5vy9aZj2CBKVbX7vsvthm3c0YmHeY7kuM-_m4VFA2ZQ7hpc6B1k14rPy1wHjk3l5nMuJU4=s0" alt="Intérieur Café ZIZ">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweohrsUHpkGdg99qLm7tJDV2gJdjYiMEwgmk7EJVuGLrkl1IlY-J0fF3HxlY49N3o5aMW80NBz_TSGRo-Cj8Q3ye0EUSnNTfJAF_bVQ7Pmgxc7juDaPUa6mEBIuyZ4WYv8A6s7l2Lw=s0" alt="Café ZIZ de nuit">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerqPcXUmlLuP56XF5-hAqOZH_MOqp10pVddZRDMVcAmP2FxIqf2_sDqcezC5HSfTGcW2uetWe-hbIVQs5oNxzUNivAekTcsPZGCHCSLEwLRocZ8YfQFwuEAC9zWvs_8993w6Uo=s0" alt="Plat de délices Café ZIZ">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqTDdI72V5xpfSEFdHW0OCeVmuXG_MmndRvJmgnpA6kptyGIpIEhq6FA2DhvEZTqHW-zFI_aHbUTIRbvl5GpefRxkh-2f9QgcitPclg063tF8QLgwKr2r1g436xzqVhYNS43TLT=s0" alt="Burger Café ZIZ">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweots5VA2mmfvfKoRhsH7SCkhl7aC6pfZ7XgMldYOciRiDbuRqNXwTqY1IxlXIbH4WDxW-yd3jIkeTim8IRrinfquZ7zftHzJje9qfhjsOaen5wNLYrYQIeo10vks-vDa_x7sTk=s0" alt="Pizza & Tacos Café ZIZ">
+                </div>
+                <!-- Vidéo WhatsApp -->
+                <div class="gallery-item">
+                    <video controls>
+                        <source src="WhatsApp Video 2026-03-01 at 05.08.19.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la balise vidéo.
+                    </video>
+                </div>
+                <!-- Vous pouvez ajouter plus d'images ici -->
+            </div>
+
+            <div class="separator-lg" style="margin-top: 40px; margin-bottom: 30px;"></div>
+            
+            <!-- PIED DE MENU -->
+            <footer class="menu-footer">
+                <div class="slogan-container">
+                    <p class="slogan" data-i18n="slogan">Qualité – Goût – Service</p>
+                    <div class="socials">
+                        <a href="https://www.facebook.com/profile.php?id=61587702085567" target="_blank" title="Facebook Café ZIZ"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/station_restaurant_ziz?igsh=MXFtaHEzbTh1YmVvZw==" target="_blank" title="Instagram Café ZIZ"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </footer>
+            
+        </div>
+    </div>
+    
+    <script src="translate.js"></script>
+    <script>
+        // Set the language from local storage if available, otherwise default to fr
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentLang = localStorage.getItem('cafeZizLang') || 'fr';
+            if (typeof setLanguage === 'function') {
+                setLanguage(currentLang);
+            }
+        });
+    </script>
+</body>
+</html>

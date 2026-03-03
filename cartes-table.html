@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartes de Table - Café ZIZ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #0f3d1a;
+            --green-primary: #1a5c2a;
+            --green-light: #2d7a3f;
+            --green-accent: #4db868;
+            --cream: #f5f0e1;
+            --cream-light: #faf7ee;
+            --gold-soft: #d4c278;
+        }
+
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #0d1f12;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .print-info {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--green-dark), var(--green-accent), var(--green-dark));
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(45, 122, 63, 0.5);
+            transition: transform 0.2s;
+        }
+
+        .print-info:hover {
+            transform: scale(1.05);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 210mm;
+        }
+
+        /* ===== CARTE ===== */
+        .table-card {
+            width: 90mm;
+            height: 130mm;
+            background: linear-gradient(170deg, #0f3d1a 0%, #1a5c2a 40%, #0f3d1a 100%);
+            border: 3px solid var(--gold-soft);
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10mm 8mm;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Motif décoratif de fond */
+        .table-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(212, 194, 120, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(212, 194, 120, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(77, 184, 104, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Pattern décoratif (losanges amazigh) */
+        .table-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 194, 120, 0.03) 35px, rgba(212, 194, 120, 0.03) 36px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(212, 194, 120, 0.03) 35px, rgba(212, 194, 120, 0.03) 36px);
+            pointer-events: none;
+        }
+
+        /* Coins décoratifs dorés */
+        .corner {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-color: var(--gold-soft);
+            z-index: 2;
+        }
+
+        .corner-tl {
+            top: 7px;
+            left: 7px;
+            border-top: 2px solid;
+            border-left: 2px solid;
+        }
+
+        .corner-tr {
+            top: 7px;
+            right: 7px;
+            border-top: 2px solid;
+            border-right: 2px solid;
+        }
+
+        .corner-bl {
+            bottom: 7px;
+            left: 7px;
+            border-bottom: 2px solid;
+            border-left: 2px solid;
+        }
+
+        .corner-br {
+            bottom: 7px;
+            right: 7px;
+            border-bottom: 2px solid;
+            border-right: 2px solid;
+        }
+
+        /* Ligne décorative top */
+        .deco-top {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+            opacity: 0.3;
+            z-index: 2;
+        }
+
+        .deco-bottom {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+            opacity: 0.3;
+            z-index: 2;
+        }
+
+        /* Logo image */
+        .card-logo-img {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid var(--gold-soft);
+            padding: 2px;
+            background: rgba(255,255,255,0.1);
+            z-index: 2;
+        }
+
+        /* Nom du café */
+        .card-header {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .card-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--cream);
+            letter-spacing: 3px;
+        }
+
+        .card-subtitle {
+            font-size: 0.45rem;
+            letter-spacing: 2.5px;
+            color: var(--gold-soft);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* Image d'ambiance */
+        .card-interior-img {
+            width: 100%;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--gold-soft);
+            margin: 5px 0;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        /* Bienvenue */
+        .card-welcome {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .welcome-ar {
+            font-size: 1rem;
+            color: var(--cream-light);
+            font-weight: 600;
+        }
+
+        .welcome-fr {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            color: var(--gold-soft);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Séparateur */
+        .card-sep {
+            width: 55%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        /* QR Code */
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            z-index: 2;
+        }
+
+        .qr-frame {
+            border: 2px solid var(--gold-soft);
+            padding: 4px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+        }
+
+        .qr-frame img {
+            display: block;
+            border-radius: 4px;
+        }
+
+        .scan-text {
+            font-size: 0.55rem;
+            color: var(--cream);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .scan-icon {
+            font-size: 0.7rem;
+            color: var(--gold-soft);
+        }
+
+        /* Bas de carte */
+        .card-bottom {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .card-cta {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            color: var(--cream);
+            letter-spacing: 1px;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        .card-emoji {
+            font-size: 0.85rem;
+            margin-top: 2px;
+            display: block;
+        }
+
+        .card-socials {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 3px;
+        }
+
+        .card-socials i {
+            color: var(--gold-soft);
+            font-size: 0.65rem;
+        }
+
+        .card-location {
+            font-size: 0.48rem;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+            margin-top: 3px;
+        }
+
+        .card-location a {
+            color: var(--gold-soft);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .card-address {
+            font-size: 0.42rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 1px;
+        }
+
+        /* ===== IMPRESSION ===== */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .print-info {
+                display: none;
+            }
+
+            .cards-grid {
+                gap: 5mm;
+            }
+
+            .table-card {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-info" onclick="window.print()">
+        <i class="fas fa-print"></i> Imprimer les cartes
+    </button>
+
+    <div class="cards-grid">
+
+        <!-- CARTE 1 -->
+        <div class="table-card">
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+            <div class="deco-top"></div>
+            <div class="deco-bottom"></div>
+
+            <img src="logo.png" alt="Logo Café ZIZ" class="card-logo-img">
+
+            <div class="card-header">
+                <div class="card-name">CAFÉ ZIZ</div>
+                <p class="card-subtitle">Restaurant – Café – Terrasse</p>
+            </div>
+
+            <div class="card-welcome">
+                <p class="welcome-ar">مرحبا بكم ✨</p>
+                <p class="welcome-fr">Bienvenue – Saveurs qui rassemblent</p>
+            </div>
+
+            <img src="interior_carte.png" alt="Ambiance Café ZIZ" class="card-interior-img">
+
+            <div class="card-sep"></div>
+
+            <div class="qr-section">
+                <i class="fas fa-mobile-screen-button scan-icon"></i>
+                <p class="scan-text">Scannez pour voir le menu</p>
+                <div class="qr-frame">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yzkluxurygroupe-rgb.github.io/MENU-ZIZ-/&color=1a5c2a&bgcolor=FFFFFF" alt="QR Code Menu" width="90" height="90">
+                </div>
+            </div>
+
+            <div class="card-bottom">
+                <span class="card-emoji">🍕 🌮 🍔</span>
+                <div class="card-socials">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <p class="card-location"><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/place/Caf%C3%A9+%26+Restaurant+Ziz/@31.9520502,-6.5865355,16z" target="_blank">Azilal</a></p>
+                <p class="card-address">Route Marrakech, Azilal</p>
+            </div>
+        </div>
+
+        <!-- CARTE 2 -->
+        <div class="table-card">
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+            <div class="deco-top"></div>
+            <div class="deco-bottom"></div>
+
+            <img src="logo.png" alt="Logo Café ZIZ" class="card-logo-img">
+
+            <div class="card-header">
+                <div class="card-name">CAFÉ ZIZ</div>
+                <p class="card-subtitle">Restaurant – Café – Terrasse</p>
+            </div>
+
+            <div class="card-welcome">
+                <p class="welcome-ar">مرحبا بكم ✨</p>
+                <p class="welcome-fr">Bienvenue – Saveurs qui rassemblent</p>
+            </div>
+
+            <img src="interior_carte.png" alt="Ambiance Café ZIZ" class="card-interior-img">
+
+            <div class="card-sep"></div>
+
+            <div class="qr-section">
+                <i class="fas fa-mobile-screen-button scan-icon"></i>
+                <p class="scan-text">Scannez pour voir le menu</p>
+                <div class="qr-frame">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yzkluxurygroupe-rgb.github.io/MENU-ZIZ-/&color=1a5c2a&bgcolor=FFFFFF" alt="QR Code Menu" width="90" height="90">
+                </div>
+            </div>
+
+            <div class="card-bottom">
+                <span class="card-emoji">🍕 🌮 🍔</span>
+                <div class="card-socials">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <p class="card-location"><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/place/Caf%C3%A9+%26+Restaurant+Ziz/@31.9520502,-6.5865355,16z" target="_blank">Azilal</a></p>
+                <p class="card-address">Route Marrakech, Azilal</p>
+            </div>
+        </div>
+
+        <!-- CARTE 3 -->
+        <div class="table-card">
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+            <div class="deco-top"></div>
+            <div class="deco-bottom"></div>
+
+            <img src="logo.png" alt="Logo Café ZIZ" class="card-logo-img">
+
+            <div class="card-header">
+                <div class="card-name">CAFÉ ZIZ</div>
+                <p class="card-subtitle">Restaurant – Café – Terrasse</p>
+            </div>
+
+            <div class="card-welcome">
+                <p class="welcome-ar">مرحبا بكم ✨</p>
+                <p class="welcome-fr">Bienvenue – Saveurs qui rassemblent</p>
+            </div>
+
+            <img src="interior_carte.png" alt="Ambiance Café ZIZ" class="card-interior-img">
+
+            <div class="card-sep"></div>
+
+            <div class="qr-section">
+                <i class="fas fa-mobile-screen-button scan-icon"></i>
+                <p class="scan-text">Scannez pour voir le menu</p>
+                <div class="qr-frame">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yzkluxurygroupe-rgb.github.io/MENU-ZIZ-/&color=1a5c2a&bgcolor=FFFFFF" alt="QR Code Menu" width="90" height="90">
+                </div>
+            </div>
+
+            <div class="card-bottom">
+                <span class="card-emoji">🍕 🌮 🍔</span>
+                <div class="card-socials">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <p class="card-location"><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/place/Caf%C3%A9+%26+Restaurant+Ziz/@31.9520502,-6.5865355,16z" target="_blank">Azilal</a></p>
+                <p class="card-address">Route Marrakech, Azilal</p>
+            </div>
+        </div>
+
+        <!-- CARTE 4 -->
+        <div class="table-card">
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+            <div class="deco-top"></div>
+            <div class="deco-bottom"></div>
+
+            <img src="logo.png" alt="Logo Café ZIZ" class="card-logo-img">
+
+            <div class="card-header">
+                <div class="card-name">CAFÉ ZIZ</div>
+                <p class="card-subtitle">Restaurant – Café – Terrasse</p>
+            </div>
+
+            <div class="card-welcome">
+                <p class="welcome-ar">مرحبا بكم ✨</p>
+                <p class="welcome-fr">Bienvenue – Saveurs qui rassemblent</p>
+            </div>
+
+            <img src="interior_carte.png" alt="Ambiance Café ZIZ" class="card-interior-img">
+
+            <div class="card-sep"></div>
+
+            <div class="qr-section">
+                <i class="fas fa-mobile-screen-button scan-icon"></i>
+                <p class="scan-text">Scannez pour voir le menu</p>
+                <div class="qr-frame">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yzkluxurygroupe-rgb.github.io/MENU-ZIZ-/&color=1a5c2a&bgcolor=FFFFFF" alt="QR Code Menu" width="90" height="90">
+                </div>
+            </div>
+
+            <div class="card-bottom">
+                <span class="card-emoji">🍕 🌮 🍔</span>
+                <div class="card-socials">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <p class="card-location"><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/place/Caf%C3%A9+%26+Restaurant+Ziz/@31.9520502,-6.5865355,16z" target="_blank">Azilal</a></p>
+                <p class="card-address">Route Marrakech, Azilal</p>
+            </div>
+        </div>
+
+        <!-- CARTE 5 -->
+        <div class="table-card">
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+            <div class="deco-top"></div>
+            <div class="deco-bottom"></div>
+
+            <img src="logo.png" alt="Logo Café ZIZ" class="card-logo-img">
+
+            <div class="card-header">
+                <div class="card-name">CAFÉ ZIZ</div>
+                <p class="card-subtitle">Restaurant – Café – Terrasse</p>
+            </div>
+
+            <div class="card-welcome">
+                <p class="welcome-ar">مرحبا بكم ✨</p>
+                <p class="welcome-fr">Bienvenue – Saveurs qui rassemblent</p>
+            </div>
+
+            <img src="interior_carte.png" alt="Ambiance Café ZIZ" class="card-interior-img">
+
+            <div class="card-sep"></div>
+
+            <div class="qr-section">
+                <i class="fas fa-mobile-screen-button scan-icon"></i>
+                <p class="scan-text">Scannez pour voir le menu</p>
+                <div class="qr-frame">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yzkluxurygroupe-rgb.github.io/MENU-ZIZ-/&color=1a5c2a&bgcolor=FFFFFF" alt="QR Code Menu" width="90" height="90">
+                </div>
+            </div>
+
+            <div class="card-bottom">
+                <span class="card-emoji">🍕 🌮 🍔</span>
+                <div class="card-socials">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <p class="card-location"><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/place/Caf%C3%A9+%26+Restaurant+Ziz/@31.9520502,-6.5865355,16z" target="_blank">Azilal</a></p>
+                <p class="card-address">Route Marrakech, Azilal</p>
+            </div>
+        </div>
+
+        <!-- CARTE 6 -->
+        <div class="table-card">
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+            <div class="deco-top"></div>
+            <div class="deco-bottom"></div>
+
+            <img src="logo.png" alt="Logo Café ZIZ" class="card-logo-img">
+
+            <div class="card-header">
+                <div class="card-name">CAFÉ ZIZ</div>
+                <p class="card-subtitle">Restaurant – Café – Terrasse</p>
+            </div>
+
+            <div class="card-welcome">
+                <p class="welcome-ar">مرحبا بكم ✨</p>
+                <p class="welcome-fr">Bienvenue – Saveurs qui rassemblent</p>
+            </div>
+
+            <img src="interior_carte.png" alt="Ambiance Café ZIZ" class="card-interior-img">
+
+            <div class="card-sep"></div>
+
+            <div class="qr-section">
+                <i class="fas fa-mobile-screen-button scan-icon"></i>
+                <p class="scan-text">Scannez pour voir le menu</p>
+                <div class="qr-frame">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yzkluxurygroupe-rgb.github.io/MENU-ZIZ-/&color=1a5c2a&bgcolor=FFFFFF" alt="QR Code Menu" width="90" height="90">
+                </div>
+            </div>
+
+            <div class="card-bottom">
+                <p class="card-cta">Commandez en ligne · Livraison rapide</p>
+                <span class="card-emoji">🍕 🌮 🍔</span>
+                <div class="card-socials">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <p class="card-location"><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/place/Caf%C3%A9+%26+Restaurant+Ziz/@31.9520502,-6.5865355,16z" target="_blank">Azilal</a></p>
+                <p class="card-address">Route Marrakech, Azilal</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
