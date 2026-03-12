@@ -6,7 +6,7 @@ const translations = {
         ambience_title: "Notre Ambiance",
         breakfast_title: "LE PETIT-DÉJEUNER",
         ftor_chamali: "Ftor Chamali",
-        ftor_chamali_desc: "Khobz • Zayt zitoun • Zayt beldi • Jben • Zitoun • Atay / Café • Bayd omelette",
+        ftor_chamali_desc: "Pain • Zayt zitoun • Zayt beldi • Jben • Zitoun • Atay / Café • Bayd omelette",
         ftor_ziz: "Ftor ZIZ",
         ftor_ziz_desc: "Khobz • Œufs • Confiture • Miel • Amlou • Olives • Huile d'olive • Yaourt • Thé / Café",
         ftor_royal: "Ftor Royal",
@@ -463,3 +463,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
